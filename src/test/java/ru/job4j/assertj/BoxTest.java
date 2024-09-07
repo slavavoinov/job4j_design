@@ -78,7 +78,7 @@ class BoxTest {
     }
 
     @Test
-    void CheckAreaTetrahedron() {
+    void ifVertexIs4ThenAreaSixtyTwoDotThirtyFive() {
         Box box = new Box(4, 6);
         double result = box.getArea();
         assertThat(result).isEqualTo(62.36d, withPrecision(0.05d))
@@ -88,7 +88,7 @@ class BoxTest {
     }
 
     @Test
-    void CheckAreaCube() {
+    void ifVertexIs8ThenAreaEightHundredSixtyFour() {
         Box box = new Box(8, 12);
         double result = box.getArea();
         assertThat(result).isEqualTo(863.99d, withPrecision(0.05d))
