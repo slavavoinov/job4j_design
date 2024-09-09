@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class NameLoad {
     private final Map<String, String> values = new HashMap<>();
 
-    public void parse(String ... names) {
+    public void parse(String... names) {
         if (names.length == 0) {
             throw new IllegalArgumentException("Names array is empty");
         }
