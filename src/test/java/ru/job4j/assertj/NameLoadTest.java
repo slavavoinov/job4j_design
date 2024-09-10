@@ -41,4 +41,12 @@ class NameLoadTest {
                 .hasMessageContaining(word)
                 .hasMessageContaining("does not contain a value");
     }
+
+    @Test
+    void checkLength() {
+        NameLoad nameLoad = new NameLoad();
+        assertThatThrownBy(nameLoad::parse)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("array is empty");
+    }
 }
