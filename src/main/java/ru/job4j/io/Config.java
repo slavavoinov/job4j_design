@@ -19,7 +19,7 @@ public class Config {
     public void load() {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
             reader.lines().forEach(line -> {
-                if (line.isEmpty() || line.startsWith("#") || line.startsWith(" ") || line.startsWith("//")) {
+                if (line.isEmpty() || line.startsWith("#") || line.startsWith(" ")) {
                     return;
                 }
                 if (!line.matches(".+=.+")) {

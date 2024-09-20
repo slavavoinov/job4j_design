@@ -46,8 +46,7 @@ class ConfigTest {
     @Test
     void whenHaveComments() {
         Config config = new Config("data/wrongProperties/withComments.properties");
-        config.load();
-        assertThat(config.value("config")).isEqualTo("java");
+        assertThatThrownBy(config::load).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
