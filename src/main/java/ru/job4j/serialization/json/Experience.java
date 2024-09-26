@@ -1,8 +1,17 @@
 package ru.job4j.serialization.json;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "experience")
 public class Experience {
-    private final String language;
-    private final int time;
+    @XmlAttribute
+    private String language;
+    @XmlAttribute
+    private int time;
+
+    public Experience() {
+    }
 
     public Experience(String language, int time) {
         this.language = language;

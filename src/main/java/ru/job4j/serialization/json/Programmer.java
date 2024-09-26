@@ -1,12 +1,31 @@
 package ru.job4j.serialization.json;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.*;
+
 import java.util.Arrays;
+import java.io.StringWriter;
 import java.util.Objects;
+
+@XmlRootElement(name = "programmer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Programmer {
-    private final boolean education;
-    private final int age;
-    private final String name;
-    private  final Experience experience;
-    private final String[] projects;
+    @XmlAttribute
+    private boolean education;
+    @XmlAttribute
+    private int age;
+    @XmlAttribute
+    private String name;
+    @XmlElement
+    private  Experience experience;
+    @XmlElementWrapper
+    @XmlElement(name = "projects")
+    private String[] projects;
+
+    public Programmer() {
+    }
 
     public Programmer(boolean education, int age,
                       String name, Experience experience, String[] projects) {
@@ -43,5 +62,20 @@ public class Programmer {
                 + ", experience=" + experience
                 + ", projects=" + Arrays.toString(projects)
                 + '}';
+    }
+
+    public static void main(String[] args) throws JAXBException {
+        final Programmer programmer = new Programmer(true, 41, "Ilon Mask",
+                new Experience("PHP", 2), new String[]{"Calories calculator", "ManWomen Weight"});
+        JAXBContext context = JAXBContext.newInstance(Programmer.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(programmer, writer);
+            String result = writer.getBuffer().toString();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
