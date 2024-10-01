@@ -36,6 +36,26 @@ public class Programmer {
         this.projects = projects;
     }
 
+    public boolean isEducation() {
+        return education;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Experience getExperience() {
+        return experience;
+    }
+
+    public String[] getProjects() {
+        return projects;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

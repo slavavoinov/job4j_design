@@ -18,6 +18,14 @@ public class Experience {
         this.time = time;
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         return "Experience{"
